@@ -3,9 +3,10 @@
 
 import os
 import shutil
+import cv2
 
-source_path = os.path.abspath(r'F:\Face\DataSet\face_anti_spoofing\IR\IR_video\IR_Print_video2img')
-target_path = os.path.abspath(r'F:\Face\DataSet\face_anti_spoofing\IR\IR_video\test')
+source_path = os.path.abspath(r'C:\Users\wt\Desktop\test')
+
 
 if not os.path.exists(target_path):
     os.makedirs(target_path)
@@ -18,8 +19,11 @@ if os.path.exists(source_path):
     for root, dirs, files in os.walk(source_path):  # walk 遍历当前source_path目录和所有子目录的文件和目录
         for file in files:                          # files 是所有的文件名列表，
             src_file = os.path.join(root, file)
-            shutil.copy(src_file, target_path)
-            print(src_file)
+            img = cv2.imread(src_file)
+            HSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+            dst_file = src_file.replace("test","hsv")
+            print(dst_file)
+            cv2.imwrite(dst_file,HSV)
             i=i+1
 
 print('%d files moved!'%i)

@@ -4,8 +4,8 @@ import os
 
 # 将dir文件夹中的filetype类型的文件按newname_head依次命名
 
-dir = r'F:\Face\dataset\ld-test\print-face'
-newname_head = "P_test"
+dir = r'F:\Paddle\models-develop\PaddleCV\image_classification\data\ILSVRC2012\val\video'
+newname_head = "val_video"
 filetype = "jpg"
 
 list = os.listdir(dir) #列出文件夹下所有的目录与文件
